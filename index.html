@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reencontro com a Mente</title>
+
+  <!-- Importa SurveyJS -->
+  <script src="https://unpkg.com/survey-jquery@1.9.18/survey.jquery.min.js"></script>
+  <link href="https://unpkg.com/survey-core@1.9.18/survey.min.css" type="text/css" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .survey-container {
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="survey-container">
+    <h2>Reencontro com a Mente: Transformando Ansiedade e Depressão</h2>
+    <div id="surveyContainer"></div> <!-- O questionário será renderizado aqui -->
+  </div>
+
+  <script>
+    var surveyJSON = {
+      "title": "Reencontro com a Mente: Transformando Ansiedade e Depressão",
+      "description": "Este questionário foi criado para ajudá-lo a entender como a ansiedade e a depressão podem estar impactando sua vida e oferecer estratégias práticas de superação.",
+      "pages": [
+        {
+          "name": "page1",
+          "elements": [
+            {
+              "type": "radiogroup",
+              "name": "dificuldadeSaudeMental",
+              "title": "Você já sentiu que a ansiedade tem afetado sua vida recentemente, especialmente em situações cotidianas?",
+              "choices": [
+                { "value": 3, "text": "Sim, frequentemente" },
+                { "value": 2, "text": "Às vezes" },
+                { "value": 1, "text": "Raramente" },
+                { "value": 0, "text": "Não" }
+              ]
+            },
+            {
+              "type": "radiogroup",
+              "name": "impactoAnsiedadeRelacoes",
+              "title": "Você já percebeu algum impacto da ansiedade ou depressão em seus relacionamentos íntimos ou na sua vida sexual?",
+              "choices": [
+                { "value": 3, "text": "Sim, afeta bastante" },
+                { "value": 2, "text": "De forma moderada" },
+                { "value": 1, "text": "Não, não percebo impacto" },
+                { "value": 0, "text": "Prefiro não comentar" }
+              ]
+            },
+            {
+              "type": "radiogroup",
+              "name": "usoTecnicasRelaxamento",
+              "title": "Você já experimentou técnicas de relaxamento, como respiração, meditação ou mindfulness?",
+              "choices": [
+                { "value": 2, "text": "Sim, regularmente" },
+                { "value": 1, "text": "Sim, mas não de forma consistente" },
+                { "value": 0, "text": "Não, nunca tentei" },
+                { "value": 2, "text": "Não, mas tenho interesse em aprender" }
+              ]
+            },
+            {
+              "type": "radiogroup",
+              "name": "impactoRedesSociais",
+              "title": "Você se sente sobrecarregado pelas redes sociais ou notícias, especialmente relacionadas a eventos globais, como mudanças climáticas ou crises econômicas?",
+              "choices": [
+                { "value": 3, "text": "Sim, muito" },
+                { "value": 2, "text": "Um pouco" },
+                { "value": 1, "text": "Não, isso não me afeta" },
+                { "value": 0, "text": "Prefiro não comentar" }
+              ]
+            },
+            {
+              "type": "radiogroup",
+              "name": "estrategiaLidarEstresse",
+              "title": "Como você costuma lidar com episódios de estresse ou ansiedade no dia a dia?",
+              "choices": [
+                { "value": 2, "text": "Praticando técnicas de autocuidado" },
+                { "value": 1, "text": "Conversando com amigos ou familiares" },
+                { "value": 1, "text": "Fazendo atividades físicas" },
+                { "value": 0, "text": "Usando redes sociais ou assistindo vídeos" },
+                { "value": 1, "text": "Outro" }
+              ]
+            },
+            {
+              "type": "radiogroup",
+              "name": "interesseHistoriasSuperacao",
+              "title": "Você se interessaria em ler sobre histórias reais de superação, nas quais pessoas transformaram sua ansiedade e depressão em crescimento pessoal?",
+              "choices": [
+                { "value": 3, "text": "Sim" },
+                { "value": 1, "text": "Talvez" },
+                { "value": 0, "text": "Não" }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "email",
+              "title": "Deixe seu e-mail abaixo para receber uma amostra gratuita do livro digital 'Reencontro com a Mente' e outras dicas de saúde mental:"
+            }
+          ]
+        }
+      ]
+    };
+
+    // Renderiza o questionário no elemento #surveyContainer
+    var survey = new Survey.Model(surveyJSON);
+    $("#surveyContainer").Survey({ model: survey });
+  </script>
+
+</body>
+</html>
