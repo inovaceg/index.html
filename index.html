@@ -34,11 +34,30 @@
     $(document).ready(function() {
       var surveyJSON = {
         "title": "Reencontro com a Mente: Transformando Ansiedade e Depressão",
-        "description": "Este questionário foi criado para ajudá-lo a entender como a ansiedade e a depressão podem estar impactando sua vida e oferecer estratégias práticas de superação.",
+        "description": "Este questionário foi criado para ajudá-lo a entender como a ansiedade e a depressão podem estar impactando sua vida e oferecer estratégias práticas de superação. Ao final, você receberá um eBook gratuito com orientações exclusivas baseadas nas suas respostas.",
+        "logoPosition": "right",
+        "completedHtml": "<h4>Obrigado por completar o questionário!</h4><p>Com base nas suas respostas, enviaremos para você o eBook gratuito 'Reencontro com a Mente', que traz estratégias práticas para transformar a ansiedade e a depressão em crescimento pessoal. Fique atento ao seu e-mail!</p>",
         "pages": [
           {
             "name": "page1",
             "elements": [
+              {
+                "type": "html",
+                "name": "introducao",
+                "html": "<h3>Bem-vindo ao Questionário 'Reencontro com a Mente'</h3><p>Este questionário foi criado para ajudá-lo a entender como a ansiedade e a depressão podem estar impactando sua vida e oferecer estratégias práticas de superação. Ao final, você receberá um eBook gratuito com orientações exclusivas baseadas nas suas respostas.</p><p><strong>Tempo estimado: 5 minutos</strong></p><p><em>Suas respostas são confidenciais e serão usadas apenas para proporcionar uma experiência mais personalizada.</em></p>"
+              },
+              {
+                "type": "text",
+                "name": "latitude",
+                "title": "Latitude",
+                "inputType": "hidden"
+              },
+              {
+                "type": "text",
+                "name": "longitude",
+                "title": "Longitude",
+                "inputType": "hidden"
+              },
               {
                 "type": "radiogroup",
                 "name": "dificuldadeSaudeMental",
@@ -109,6 +128,35 @@
                 "type": "text",
                 "name": "email",
                 "title": "Deixe seu e-mail abaixo para receber uma amostra gratuita do livro digital 'Reencontro com a Mente' e outras dicas de saúde mental:"
+              }
+            ]
+          },
+          {
+            "name": "page2",
+            "elements": [
+              {
+                "type": "expression",
+                "name": "totalPontuacao",
+                "title": "Sua pontuação total é:",
+                "expression": "{dificuldadeSaudeMental} + {impactoAnsiedadeRelacoes} + {usoTecnicasRelaxamento} + {impactoRedesSociais} + {estrategiaLidarEstresse} + {interesseHistoriasSuperacao}"
+              },
+              {
+                "type": "html",
+                "name": "feedbackAltaPontuacao",
+                "visibleIf": "{totalPontuacao} >= 13",
+                "html": "<h4>Você está altamente engajado e pronto para receber nosso eBook exclusivo!</h4><p>Ele trará ferramentas práticas para transformar a ansiedade e a depressão em crescimento pessoal.</p>"
+              },
+              {
+                "type": "html",
+                "name": "feedbackMediaPontuacao",
+                "visibleIf": "{totalPontuacao} > 7 and {totalPontuacao} < 13",
+                "html": "<h4>Você parece ter interesse em melhorar sua saúde mental!</h4><p>Sugerimos que você explore nosso eBook para obter mais dicas práticas que podem ajudar no seu caminho.</p>"
+              },
+              {
+                "type": "html",
+                "name": "feedbackBaixaPontuacao",
+                "visibleIf": "{totalPontuacao} <= 7",
+                "html": "<h4>Sua pontuação indica um nível mais baixo de ansiedade no momento.</h4><p>Continue cuidando da sua saúde mental! Nosso eBook contém dicas valiosas para prevenir futuros desafios.</p>"
               }
             ]
           }
