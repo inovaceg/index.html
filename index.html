@@ -163,8 +163,22 @@
         ]
       };
 
-      // Renderiza o questionário no elemento #surveyContainer
+      // Captura a geolocalização do usuário
+      function getGeolocation(survey) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            survey.setValue('latitude', position.coords.latitude);
+            survey.setValue('longitude', position.coords.longitude);
+          });
+        }
+      }
+
+      // Renderiza o questionário e captura a geolocalização ao carregar
       var survey = new Survey.Model(surveyJSON);
+      survey.onAfterRenderSurvey.add(function(sender) {
+        getGeolocation(sender);
+      });
+
       $("#surveyContainer").Survey({ model: survey });
     });
   </script>
