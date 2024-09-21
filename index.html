@@ -35,35 +35,10 @@
     var surveyJSON = {
       "title": "Reencontro com a Mente: Transformando Ansiedade e Depressão",
       "description": "Este questionário foi criado para ajudá-lo a entender como a ansiedade e a depressão podem estar impactando sua vida e oferecer estratégias práticas de superação. Ao final, você receberá um eBook gratuito com orientações exclusivas baseadas nas suas respostas.",
-      "logoPosition": "right",
-      "completedHtml": "<h4>Obrigado por completar o questionário!</h4><p>Com base nas suas respostas, enviaremos para você o eBook gratuito 'Reencontro com a Mente', que traz estratégias práticas para transformar a ansiedade e a depressão em crescimento pessoal. Fique atento ao seu e-mail!</p>",
       "pages": [
         {
           "name": "page1",
           "elements": [
-            {
-              "type": "html",
-              "name": "introducao",
-              "html": "<h3>Bem-vindo ao Questionário 'Reencontro com a Mente'</h3><p>Este questionário foi criado para ajudá-lo a entender como a ansiedade e a depressão podem estar impactando sua vida e oferecer estratégias práticas de superação. Ao final, você receberá um eBook gratuito com orientações exclusivas baseadas nas suas respostas.</p><p><strong>Tempo estimado: 5 minutos</strong></p><p><em>Suas respostas são confidenciais e serão usadas apenas para proporcionar uma experiência mais personalizada.</em></p>"
-            },
-            {
-              "type": "text",
-              "name": "latitude",
-              "title": "Latitude",
-              "visible": false
-            },
-            {
-              "type": "text",
-              "name": "longitude",
-              "title": "Longitude",
-              "visible": false
-            },
-            {
-              "type": "text",
-              "name": "endereco",
-              "title": "Endereço Completo",
-              "visible": false
-            },
             {
               "type": "radiogroup",
               "name": "dificuldadeSaudeMental",
@@ -179,7 +154,7 @@
         var surveyData = sender.data;
         // Envia os dados via AJAX para o Google Apps Script
         $.ajax({
-          url: 'https://script.google.com/macros/s/AKfycbykpF99YmuGltqX8OJvU2Moc4oOf1TGaSJWdV-xZmHk8m04NtCLu6a2fm1gpkt3Ql7gyQ/exec',  // URL do Web App
+          url: 'https://script.google.com/macros/s/AKfycbykpF99YmuGltqX8OJvU2Moc4oOf1TGaSJWdV-xZmHk8m04NtCLu6a2fm1gpkt3Ql7gyQ/exec',  // Cole o URL do seu Web App
           type: 'POST',
           data: JSON.stringify(surveyData),
           contentType: 'application/json',
