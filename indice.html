@@ -1,0 +1,21 @@
+<script>
+  var survey = new Survey.Model(YOUR_JSON_SURVEY_DATA);
+
+  survey.onComplete.add(function (sender) {
+    // Executa no final do questionário, caso necessário
+    console.log("Questionário completo");
+  });
+
+  survey.onAfterRenderSurvey.add(function(sender) {
+    // Captura a geolocalização após o questionário ser renderizado
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        sender.setValue("latitude", position.coords.latitude);
+        sender.setValue("longitude", position.coords.longitude);
+      });
+    }
+  });
+
+  // Renderiza o questionário no elemento #surveyContainer
+  Survey.SurveyNG.render("surveyContainer", { model: survey });
+</script>
